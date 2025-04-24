@@ -1,0 +1,150 @@
+<style>
+  :root {
+    --primary-yellow: #ffb81c;
+    --primary-blue: #003366;
+    --active-blue: #002244;
+    --gray: #999;
+    --light-gray: #666;
+  }
+  #container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .stepOneContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    opacity: 0.5;
+  }
+  .stepOneContainerLeftSide {
+    background-color: var(--primary-yellow);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+  }
+  .stepOneContainerRightSide {
+    line-height: 5px;
+  }
+  .stepOneContainerRightSide > .title {
+    font-size: 14px;
+    color: var(--gray);
+    font-weight: bold;
+  }
+  .stepOneContainerRightSide > .subtitle {
+    font-size: 16px;
+    color: var(--primary-blue);
+    font-weight: 700;
+    text-align: left;
+  }
+  #hr {
+    border: 0;
+    border-top: 3px solid var(--primary-yellow);
+    border-radius: 50px;
+    width: 220px;
+    transform: rotate(90deg);
+    position: absolute;
+    z-index: 0;
+    margin-top: 135px;
+    margin-left: -90px;
+    opacity: 0.5;
+  }
+
+  .active {
+    opacity: 1 !important;
+  }
+</style>
+
+<div id="container">
+  <hr id="hr" />
+  <div class="stepOneContainer" id="stepOne">
+    <div class="stepOneContainerLeftSide">
+      <img
+        class="imgIcons"
+        src="https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement.svg"
+        alt=""
+      />
+    </div>
+    <div class="stepOneContainerRightSide">
+      <p class="title">Etape 1</p>
+      <p class="subtitle">Informations personnelles</p>
+    </div>
+  </div>
+  <div class="stepOneContainer" id="stepTwo">
+    <div class="stepOneContainerLeftSide">
+      <img
+        class="imgIcons"
+        src="https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement1.svg"
+        alt=""
+      />
+    </div>
+    <div class="stepOneContainerRightSide">
+      <p class="title">Etape 1</p>
+      <p class="subtitle">Informations personnelles</p>
+    </div>
+  </div>
+  <div class="stepOneContainer" id="stepThree">
+    <div class="stepOneContainerLeftSide">
+      <img
+        class="imgIcons"
+        src="https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement3.svg"
+        alt=""
+      />
+    </div>
+    <div class="stepOneContainerRightSide">
+      <p class="title">Etape 1</p>
+      <p class="subtitle">Informations personnelles</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const formContainer = document.querySelector(".fluent_form_90");
+
+    if (!formContainer) {
+      console.log("Form container not found.");
+      return;
+    }
+
+    const nextButtons = formContainer.querySelectorAll(".ff-btn-next");
+    const prevButtons = formContainer.querySelectorAll(".ff-btn-prev");
+
+    // Function to check the current step
+    function checkCurrentStep() {
+      const stepOne = formContainer.querySelector("#user_data_part_one");
+      const stepTwo = formContainer.querySelector("#user_data_part_two");
+
+      if (stepOne && stepOne.offsetParent !== null) {
+        console.log("User at step One.");
+      } else if (stepTwo && stepTwo.offsetParent !== null) {
+        console.log("User at step Two.");
+      } else {
+        console.log("User not on step one or two.");
+      }
+    }
+
+    // Attach event listeners to next buttons
+    nextButtons.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        setTimeout(checkCurrentStep, 300); // Delay to allow step change
+      });
+    });
+
+    // Attach event listeners to prev buttons
+    prevButtons.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        setTimeout(checkCurrentStep, 300); // Delay to allow step change
+      });
+    });
+
+    // Initial check (optional)
+    checkCurrentStep();
+  });
+</script>

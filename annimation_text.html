@@ -1,0 +1,86 @@
+<div id="flip-container">
+  <div class="flip-text">Paiements</div>
+  <div class="flip-text">Communication</div>
+  <div class="flip-text">Planification</div>
+  <div class="flip-text">Facturation</div>
+</div>
+
+<style>
+  /* Container */
+  #flip-container {
+    width: 250px;
+    height: 60px;
+    margin: auto;
+    perspective: 1000px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Flip Text Box */
+  .flip-text {
+    width: 100%;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #023047;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: rotateX(90deg);
+    animation: flipAnimation 12s infinite;
+  }
+
+  /* Animation */
+  @keyframes flipAnimation {
+    0%, 20% {
+      opacity: 1;
+      transform: rotateX(0);
+    }
+    25%, 95% {
+      opacity: 0;
+      transform: rotateX(90deg);
+    }
+  }
+
+  /* Specific timings */
+  .flip-text:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .flip-text:nth-child(2) {
+    animation-delay: 3s;
+  }
+  .flip-text:nth-child(3) {
+    animation-delay: 6s;
+  }
+  .flip-text:nth-child(4) {
+    animation-delay: 9s;
+  }
+
+  /* Media query for 768x911 screens */
+  @media (max-width: 768px) and (max-height: 911px) {
+    #flip-container {
+      width: 200px;
+    }
+
+    .flip-text {
+      font-size: 1.5rem;
+    }
+  }
+  @media (max-width: 360px) and (max-height: 768px) {
+      #flip-container {
+    width: 250px;
+    height: 60px;
+    margin: auto 30px;
+    perspective: 1000px;
+    position: relative;
+    overflow: hidden;
+  }
+}
+</style>

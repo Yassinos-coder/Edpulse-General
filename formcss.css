@@ -1,0 +1,197 @@
+/* Ajout du défilement à la classe principale du formulaire */
+.fluent_form_90 {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    overflow-y: auto;
+    max-height: 50vh;
+    scrollbar-width: thin;
+    scrollbar-color: #FFB81C #f1f1f1;
+}
+
+/* Keep all form controls transparent */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control {
+    background-color: transparent !important;
+}
+
+/* For all states - focus, filled, active */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:focus,
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:active,
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control.filled {
+    background-color: transparent !important;
+}
+
+/* For select elements which often have different styling */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 select.ff-el-form-control {
+    background-color: transparent !important;
+}
+
+/* This targets inputs that have been interacted with */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-is-filled .ff-el-form-control,
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-is-active .ff-el-form-control {
+    background-color: transparent !important;
+}
+
+/* For textarea elements */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 textarea.ff-el-form-control {
+    background-color: transparent !important;
+}
+
+/* For checkboxes and radio buttons */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input[type="checkbox"],
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input[type="radio"] {
+    background-color: transparent !important;
+}
+
+/* For their labels */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-check-label {
+    background-color: transparent !important;
+}
+
+.ff-el-form-control > input {
+    background-color: transparent;
+}
+
+/* Remove background on inputs after typing in data */
+input[type="file"] {
+    color: transparent !important;
+}
+
+/* Chrome autofill background override */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill,
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:hover, 
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:focus, 
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:active {
+    transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Masquer complètement le bouton Précédent */
+.fluent_form_90 .ff-btn-prev {
+    display: none !important;
+}
+
+/* Style de la barre de défilement pour Chrome, Edge et Safari */
+.fluent_form_90::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.fluent_form_90::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.fluent_form_90::-webkit-scrollbar-thumb {
+    background: #FFB81C;
+    border-radius: 10px;
+}
+
+.fluent_form_90::-webkit-scrollbar-thumb:hover {
+    background: #F5A700;
+}
+
+/* Style général du formulaire */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Conteneur des questions pour assurer l'espace nécessaire */
+.fluent_form_90 .ff-form-main-wrapper {
+    width: 100%;
+    padding: 10px 5px;
+}
+
+/* Style des champs de saisie */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control {
+    border-radius: 4px;
+    border: 1px solid #E0E0E0;
+    padding: 12px 15px;
+    height: auto;
+    font-size: 16px;
+}
+
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:focus {
+    border-color: #0066CC;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
+}
+
+/* Style des étiquettes */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-input--label label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* Style du bouton jaune */
+.elementor-1066726 .elementor-element.elementor-element-cce00c9 .fluentform-widget-wrapper .ff-el-group .ff-btn-submit {
+    background-color: #FFB81C !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 14px 28px !important;
+    border-radius: 100px !important;
+    border: none !important;
+    font-size: 16px !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    text-transform: none !important;
+}
+
+
+
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-btn-submit:hover {
+    background-color: #F5A700 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Alignement du bouton à droite */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-group.ff-text-right {
+    text-align: right;
+    margin-top: 25px;
+}
+
+/* Style des sections */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-section-header {
+    color: #003366;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+/* Style des placeholders */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control::placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+}
+
+/* Espacement des groupes de champs */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-group {
+    margin-bottom: 20px;
+}
+
+.multi_select_source_of_reach {
+    width: 50px;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 767px) {
+    .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-group.ff-text-right {
+        text-align: center;
+    }
+
+    .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-btn-submit {
+        width: 100%;
+        padding: 12px 20px !important;
+    }
+
+    .fluent_form_90 {
+        overflow-x: auto;
+        max-height: 80vh;
+    }
+}
