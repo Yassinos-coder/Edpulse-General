@@ -233,7 +233,7 @@ input[type="file"] {
 .ff_file_upload_holder::after {
     content: "";
     position: absolute;
-    top: 30%;
+    top: 50%;
     right: 15px;
     transform: translateY(-50%);
     width: 20px;
