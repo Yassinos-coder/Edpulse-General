@@ -14,6 +14,11 @@
     background-color: transparent !important;
 }
 
+/* Section Titles Custom Css */
+.section_title {
+    font-size: 17px !important;
+}
+
 /* For all states - focus, filled, active */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:focus,
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:active,
@@ -48,7 +53,7 @@
     background-color: transparent !important;
 }
 
-.ff-el-form-control > input {
+.ff-el-form-control>input {
     background-color: transparent;
 }
 
@@ -59,8 +64,8 @@ input[type="file"] {
 
 /* Chrome autofill background override */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill,
-.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:hover, 
-.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:focus, 
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:hover,
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:focus,
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:active {
     transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
@@ -68,9 +73,9 @@ input[type="file"] {
 }
 
 /* Masquer complètement le bouton Précédent */
-.fluent_form_90 .ff-btn-prev {
+/*.fluent_form_90 .ff-btn-prev {
     display: none !important;
-}
+}*/
 
 /* Style de la barre de défilement pour Chrome, Edge et Safari */
 .fluent_form_90::-webkit-scrollbar {
@@ -175,8 +180,9 @@ input[type="file"] {
     margin-bottom: 20px;
 }
 
-.multi_select_source_of_reach {
-    width: 50px;
+/* Where did you find us, multiple select style */
+.frm-fluent-form .choices:last-child {
+    width: 50%;
 }
 
 /* Responsive pour mobile */
@@ -194,4 +200,46 @@ input[type="file"] {
         overflow-x: auto;
         max-height: 80vh;
     }
+}
+
+/* Styling for the file inputs */
+.ff_file_upload_holder input[type="file"],
+.ff_file_upload_holder .ff_upload_btn {
+    display: none !important;
+    visibility: hidden;
+}
+
+
+.ff_file_upload_holder {
+    position: relative;
+    /* Needed to position ::after properly */
+}
+
+.ff_file_upload_holder::before {
+    content: "Déposez un fichier ici ou cliquez pour télécharger";
+    background-color: #f2f2f2;
+    padding: 5px 40px 5px 15px;
+    color: #6b6b6b;
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #6b6b6b;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.ff_file_upload_holder::after {
+    content: "";
+    position: absolute;
+    top: 30%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 25px;
+    background-image: url("https://tutorax.com/wp-content/uploads/2025/04/download_icon_form.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
 }
