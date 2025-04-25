@@ -228,6 +228,7 @@ input[type="file"] {
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
+    cursor: pointer;
 }
 
 .ff_file_upload_holder::after {
@@ -242,6 +243,7 @@ input[type="file"] {
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none;
+    cursor: pointer;
 }
 
 /* The multiple choices CSS styling part */

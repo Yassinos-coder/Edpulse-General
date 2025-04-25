@@ -1,0 +1,29 @@
+
+<style>
+    #pContainer {
+        
+    }
+    #paragraph {
+        text-align: center;
+        color: #023047;
+    }
+</style>
+
+<div id="pContainer">
+  <p id="paragraph">
+    Merci pour votre intérêt envers le poste de
+    <span id="nom_du_poste"></span> chez Tutorax ! Nous prenons le temps
+    d’examiner attentivement votre candidature. Si votre expérience et vos
+    compétences correspondent à nos besoins actuels, nous vous contacterons par
+    courriel pour la suite.
+  </p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const poste = urlParams.get("poste");
+    const nom_du_poste = document.getElementById("nom_du_poste");
+    nom_du_poste.textContent = poste ? poste : "tuteur";
+  });
+</script>

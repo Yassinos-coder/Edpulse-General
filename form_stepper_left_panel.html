@@ -18,16 +18,18 @@
          Stepper Container
       ==================== */
   .fluent-form-stepper {
-    display: flex
-;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     position: relative;
     font-family: "Arial", sans-serif;
-    height: 630px;
+    height: 640px;
+    max-height: 640px;
     background-color: white;
-    padding: 20px;
+    padding-left: 15px;
+    border-radius: 25px;
+    border: 5px solid #f7f7f7;
   }
 
   /* ====================
@@ -40,7 +42,7 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
-    gap: 2%;
+    gap: 5%;
     z-index: 20; /* Increased from 10 to ensure steps are above connecting lines */
     transition: all var(--transition-duration) ease;
   }
@@ -295,9 +297,9 @@
       if (!img) return;
 
       const images = [
-        "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement_indeed_avis.png",
-        "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement_pic_below.png",
-        "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement_pic_below_step_3.png",
+        "https://tutorax.com/wp-content/uploads/2025/04/Visuels-Tutorax-2025-04-18T183536.333.png",
+        "https://tutorax.com/wp-content/uploads/2025/04/Visuels-Tutorax-2025-04-18T180103.156.png",
+        "https://tutorax.com/wp-content/uploads/2025/04/Visuels-Tutorax-2025-04-21T130452.980.png",
       ];
 
       if (images[index]) {
