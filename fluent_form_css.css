@@ -477,3 +477,70 @@ input[type="file"] {
     background: #023047 !important;
     border-radius: 50% !important;
 }
+
+/* File upload preview */
+.ff-upload-preview {
+    border: 1px solid #023047 !important;
+    background-color: #f4faff !important;
+    padding: 8px 10px !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    font-family: 'Inter', sans-serif !important;
+    max-width: 760px !important;
+}
+
+.ff-upload-thumb {
+    flex-shrink: 0 !important;
+    width: 50px !important;
+    height: 50px !important;
+    overflow: hidden !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+}
+
+.ff-upload-preview-img {
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center center !important;
+}
+
+.ff-upload-details {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    min-width: 0 !important;
+}
+
+.ff-upload-filename {
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    color: #023047 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+}
+
+.ff-el-progress-bar {
+    height: 5px !important;
+    border-radius: 3px !important;
+    background-color: #023047 !important;
+}
+
+.ff-upload-progress-inline-text,
+.ff-upload-filesize {
+    font-size: 11px !important;
+    color: #555 !important;
+    margin-top: 2px !important;
+}
+
+.ff-upload-remove {
+    font-size: 16px !important;
+    color: #d62828 !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
