@@ -27,7 +27,6 @@
     height: 640px;
     max-height: 640px;
     background-color: white;
-    padding-left: 15px;
     border-radius: 25px;
     border: 5px solid #f7f7f7;
   }
@@ -68,6 +67,7 @@
     padding: 5px;
     transition: opacity var(--transition-duration) ease;
     z-index: 30 !important;
+    margin-left: 15px;
   }
 
   .fluent-form-step.active .iconDiv {
@@ -154,11 +154,12 @@
     border-top: 3px solid var(--primary-yellow);
     border-radius: 50px;
     transform: rotate(90deg);
-    left: -40px;
+    left: -25px;
     top: 107px;
     opacity: 0.2;
     z-index: 5 !important;
     transition: opacity 0.3s ease;
+
   }
 
   /* ==================
@@ -166,15 +167,18 @@
     ==================*/
   #img_indeed_avis_container {
     background-color: white;
+    width: 95%;
+    margin-left: 10px;
   }
-  #img_indeed_avis {
-    height: auto;
-    object-fit: cover;
-  }
+
 
   #bottom_img_left_side_panel {
     margin-top: 20px; /* Added margin to separate from steps */
     max-width: 100%; /* Ensure image doesn't overflow container */
+    box-shadow: 1px 0px 6px 0px rgba(133, 133, 133, 0.75);
+    -webkit-box-shadow: 1px 0px 6px 0px rgba(133, 133, 133, 0.75);
+    -moz-box-shadow: 1px 0px 6px 0px rgba(133, 133, 133, 0.75);
+    border-radius: 25px;
   }
 
   /* ====================

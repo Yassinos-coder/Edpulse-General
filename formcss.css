@@ -19,6 +19,16 @@
     font-size: 17px !important;
 }
 
+/* HEIGHT FOR LAST STEP AND ALL ACTIVE STEPS */
+.fluentform .ff-step-t-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 145px !important;
+}
+
 /* For all states - focus, filled, active */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:focus,
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:active,
@@ -433,4 +443,37 @@ input[type="file"] {
 
 .choices__list--dropdown::-webkit-scrollbar-thumb:hover {
     background: #e5a719 !important;
+}
+
+
+/* style input radio check */
+.ff-el-form-check-input[type="radio"]:checked {
+    border-color: #023047 !important;
+    background: #fff !important;
+}
+
+.ff-el-form-check-input[type="radio"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    border: 2px solid #d1d5db !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    transition: all 0.2s ease !important;
+    position: relative !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+}
+
+.ff-el-form-check-input[type="radio"]:checked::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 8px !important;
+    height: 8px !important;
+    background: #023047 !important;
+    border-radius: 50% !important;
 }
