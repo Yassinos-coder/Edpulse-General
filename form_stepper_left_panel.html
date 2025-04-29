@@ -28,6 +28,7 @@
     max-height: 640px;
     background-color: white;
     margin-left: 80px;
+    margin-right: 15px;
   }
 
   /* ====================
@@ -91,6 +92,9 @@
     z-index: 25; /* Ensure text is above connecting lines */
     opacity: 0.7; /* Default low opacity */
     transition: opacity var(--transition-duration) ease;
+  }
+  .fluent-form-step-content:hover {
+    cursor: pointer;
   }
 
   .fluent-form-step.active .fluent-form-step-content {
@@ -184,9 +188,9 @@
   }
 
   #fluent-form-subContainer {
-    box-shadow: 0px 0px 5px 1px rgba(153, 153, 153, 0.2);
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(153, 153, 153, 0.2);
-    -moz-box-shadow: 0px 0px 5px 1px rgba(153, 153, 153, 0.2);
+    box-shadow: 0px 0px 5px 5px rgba(153, 153, 153, 0.2);
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(153, 153, 153, 0.2);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(153, 153, 153, 0.2);
     padding-top: 95px;
     padding-bottom: 35px;
     border-radius: 5px;
@@ -216,6 +220,7 @@
       max-height: 640px;
       background-color: white;
       margin-left: 30px;
+      margin-right: 15px;
     }
   }
 </style>
@@ -298,43 +303,41 @@
 
     const steps = document.querySelectorAll(".fluent-form-step");
     const formContainer = document.querySelector(".fluent_form_90");
+    const stepSections = Array.from(document.querySelectorAll(".ff-step-body"));
 
-    if (!formContainer) {
-      console.error(
-        "Form container not found! Make sure the selector is correct."
-      );
-      return;
+    const stepMapping = {
+      "step_start-90_9": 1,
+      "form_step-90_3": 2,
+      "form_step-90_5": 3,
+      "form_step-90_8": 4,
+    };
+
+    const stepImages = {
+      1: "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement.png",
+      2: "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement-1.png",
+      3: "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement-2.png",
+      4: "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement-2.png",
+    };
+
+    function getCurrentStepIndex() {
+      const activeStep = document.querySelector(".fluentform-step.active");
+      if (!activeStep) return null;
+      const dataName = activeStep.getAttribute("data-name");
+      return stepMapping[dataName] || null;
     }
-
-    const nextButtons = formContainer.querySelectorAll(".ff-btn-next");
-    const prevButtons = formContainer.querySelectorAll(".ff-btn-prev");
-    const stepSections = Array.from(
-      formContainer.querySelectorAll(".ff-step-body")
-    );
-    const totalSteps = steps.length; // Total number of steps
-    let stepCounter = 1; // Start at Step 1
 
     function updateStepImage(counter) {
       const img = document.getElementById("bottom_img_left_side_panel");
-      if (!img) return;
-
-      const images = [
-        "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement.png", // Step 1
-        "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement-1.png", // Step 2
-        "https://tutorax.com/wp-content/uploads/2025/04/Draft-Formulaire-recrutement-2.png", // Step 3
-      ];
-
-      const imageIndex = counter - 1; // because counter starts at 1
-      if (images[imageIndex]) {
-        img.src = images[imageIndex];
+      if (img && stepImages[counter]) {
+        img.src = stepImages[counter];
       }
     }
 
     function updateActiveStepUI(counter) {
       steps.forEach((step, i) => {
         step.classList.remove("active", "completed");
-        if (i < counter - 1) step.classList.add("completed"); // completed steps
-        if (i === counter - 1) step.classList.add("active"); // active step
+        if (i < counter - 1) step.classList.add("completed");
+        if (i === counter - 1) step.classList.add("active");
       });
 
       const connector = document.getElementById("step-connector");
@@ -343,32 +346,83 @@
       }
     }
 
-    function handleStepChange() {
-      console.log("StepCounter changed to:", stepCounter);
+    // function onStepChange() {
+    //   const index = getCurrentStepIndex();
+    //   if (!index) return;
+    //   console.log("Step changed! Current index:", index);
+    //   updateStepImage(index);
+    //   updateActiveStepUI(index);
+    // }
 
-      // Prevent stepCounter going outside bounds
-      if (stepCounter < 1) stepCounter = 1;
-      if (stepCounter > totalSteps) stepCounter = totalSteps;
+    function setupStepObserver() {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (
+            mutation.attributeName === "class" &&
+            mutation.target.classList.contains("active")
+          ) {
+            onStepChange();
+          }
+        });
+      });
 
-      updateActiveStepUI(stepCounter);
-      updateStepImage(stepCounter);
+      const allSteps = document.querySelectorAll(".fluentform-step");
+      allSteps.forEach((step) => {
+        observer.observe(step, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      });
+
+      console.log(
+        "Observer set up successfully for",
+        allSteps.length,
+        "step elements"
+      );
+      return observer;
     }
 
-    nextButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        stepCounter++;
-        setTimeout(handleStepChange, 300); // Little delay to let FluentForm switch
-      });
-    });
+    // Setup observer
+    setupStepObserver();
 
-    prevButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        stepCounter--;
-        setTimeout(handleStepChange, 300);
-      });
-    });
+    // Initial call
+    setTimeout(onStepChange, 500);
+    let currentStepIndex = null; // Track current index globally
 
-    // Initial setup
-    setTimeout(handleStepChange, 500);
+    function onStepChange() {
+      const index = getCurrentStepIndex();
+      if (!index) return;
+      console.log("Step changed! Current index:", index);
+      currentStepIndex = index - 1; // Because data-step-index is 0-based
+      updateStepImage(index);
+      updateActiveStepUI(index);
+    }
+
+    // Handle clicks on .fluent-form-step-content
+    document
+      .querySelectorAll(".fluent-form-step-content")
+      .forEach((contentDiv) => {
+        contentDiv.addEventListener("click", function (e) {
+          const stepEl = contentDiv.closest(".fluent-form-step");
+          if (!stepEl) return;
+
+          const targetIndex = parseInt(stepEl.getAttribute("data-step-index"));
+          if (isNaN(targetIndex)) return;
+
+          if (currentStepIndex === null) return; // StepObserver hasn't run yet
+
+          if (targetIndex > currentStepIndex) {
+            console.log(`User clicked forward to step ${targetIndex + 1}`);
+            const nextBtn = document.querySelector(".ff-btn-next");
+            if (nextBtn) nextBtn.click();
+          } else if (targetIndex < currentStepIndex) {
+            console.log(`User clicked backward to step ${targetIndex + 1}`);
+            const prevBtn = document.querySelector(".ff-btn-prev");
+            if (prevBtn) prevBtn.click();
+          } else {
+            console.log("Clicked current step – no navigation.");
+          }
+        });
+      });
   });
 </script>
