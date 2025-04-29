@@ -208,7 +208,7 @@
       left: 14px; /* Adjust for smaller padding on mobile */
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1280px) {
     .fluent-form-stepper {
       display: flex;
       flex-direction: column;
@@ -219,7 +219,7 @@
       height: 640px;
       max-height: 640px;
       background-color: white;
-      margin-left: 30px;
+      margin-left: 20px;
       margin-right: 15px;
     }
   }
@@ -409,19 +409,31 @@
           const targetIndex = parseInt(stepEl.getAttribute("data-step-index"));
           if (isNaN(targetIndex)) return;
 
-          if (currentStepIndex === null) return; // StepObserver hasn't run yet
+          if (currentStepIndex === null || targetIndex === currentStepIndex)
+            return;
 
-          if (targetIndex > currentStepIndex) {
-            console.log(`User clicked forward to step ${targetIndex + 1}`);
-            const nextBtn = document.querySelector(".ff-btn-next");
-            if (nextBtn) nextBtn.click();
-          } else if (targetIndex < currentStepIndex) {
-            console.log(`User clicked backward to step ${targetIndex + 1}`);
-            const prevBtn = document.querySelector(".ff-btn-prev");
-            if (prevBtn) prevBtn.click();
-          } else {
-            console.log("Clicked current step – no navigation.");
-          }
+          const stepDifference = Math.abs(targetIndex - currentStepIndex);
+          const btnSelector =
+            targetIndex > currentStepIndex ? ".ff-btn-next" : ".ff-btn-prev";
+          const direction =
+            targetIndex > currentStepIndex ? "forward" : "backward";
+
+          console.log(
+            `Navigating ${direction} from step ${currentStepIndex + 1} to ${
+              targetIndex + 1
+            }`
+          );
+
+          let count = 0;
+          const interval = setInterval(() => {
+            const btn = document.querySelector(btnSelector);
+            if (btn) btn.click();
+
+            count++;
+            if (count >= stepDifference) {
+              clearInterval(interval);
+            }
+          }, 300); // 300ms delay between clicks for form to process step change
         });
       });
   });
