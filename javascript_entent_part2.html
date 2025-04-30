@@ -1,0 +1,46 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.querySelector(".sidebar");
+    const collapseBtn = document.querySelector(".collapse-btn");
+
+    // Create expand button
+    const expandBtn = document.createElement("button");
+    expandBtn.className = "expand-btn";
+    expandBtn.innerHTML = "»";
+    sidebar.parentNode.insertBefore(expandBtn, sidebar.nextSibling);
+
+    // Function to handle sidebar collapse/expand
+    function toggleSidebar() {
+      sidebar.classList.toggle("collapsed");
+
+      // Store the state in localStorage
+      localStorage.setItem(
+        "sidebarCollapsed",
+        sidebar.classList.contains("collapsed")
+      );
+    }
+
+    collapseBtn.addEventListener("click", toggleSidebar);
+    expandBtn.addEventListener("click", toggleSidebar);
+
+    // Check localStorage for previous state
+    const wasCollapsed = localStorage.getItem("sidebarCollapsed") === "true";
+    if (wasCollapsed) {
+      sidebar.classList.add("collapsed");
+    }
+
+    // Handle window resize
+    let isMobile = window.innerWidth <= 768;
+
+    window.addEventListener("resize", function () {
+      const wasNotMobile = !isMobile;
+      isMobile = window.innerWidth <= 768;
+
+      // Reset sidebar state when switching between mobile and desktop
+      if (isMobile !== wasNotMobile) {
+        sidebar.classList.remove("collapsed");
+        localStorage.removeItem("sidebarCollapsed");
+      }
+    });
+  });
+</script>

@@ -19,7 +19,7 @@
         scrollbar-width: thin;
         scrollbar-color: #FFB81C #f1f1f1;
     }
-  }
+}
 
 /* Keep all form controls transparent */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control {
@@ -38,7 +38,7 @@
     gap: 12px;
     justify-content: space-between;
     align-items: center;
-    margin-top: 145px !important;
+    margin-top: 120px !important;
 }
 
 /* For all states - focus, filled, active */
