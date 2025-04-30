@@ -3,6 +3,10 @@
     border: none !important;
 }
 
+.elementor-section.elementor-section-boxed>.elementor-container {
+    max-width: none !important;
+}
+
 .service-agreement {
     width: 100%;
     background-color: white;
