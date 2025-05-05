@@ -304,3 +304,9 @@ a {
 .ff-el-progress-bar span {
     color: white !important;
 }
+
+@media screen and (max-width : 767px){
+    .elementor-14511 .elementor-element.elementor-element-8025c21 {
+        padding: 0 !important;
+    }
+}
