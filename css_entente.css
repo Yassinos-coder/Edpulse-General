@@ -86,10 +86,10 @@ a {
 
 }
 
-.nav-item.active {
+.my_nav-item a.active {
     color: #023047;
     font-weight: 600;
-}
+  }
 
 .my_content {
     background-color: white;
