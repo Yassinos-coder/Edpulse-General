@@ -1,29 +1,34 @@
-/* Ajout du défilement à la classe principale du formulaire */
+/* Core Form Container Styling with Cross-Browser Compatibility */
 .fluent_form_90 {
     max-width: 1200px;
     margin: 0 auto;
-    font-family: 'Arial', sans-serif;
-    overflow-y: scroll;
-    max-height: 52vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
+    overflow-y: auto;
+    max-height: 550px;
+    /* Standard CSS property */
     scrollbar-width: thin;
+    /* Firefox */
     scrollbar-color: #FFB81C #f1f1f1;
+    /* Firefox */
+    /* Chrome, Edge, Safari will use the ::-webkit-scrollbar rules below */
 }
 
 @media (max-width: 1280px) {
     .fluent_form_90 {
         max-width: 1200px;
         margin: 0 auto;
-        font-family: 'Arial', sans-serif;
-        overflow-y: scroll;
-        max-height: 70vh;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
+        overflow-y: auto;
+        max-height: 550px;
         scrollbar-width: thin;
         scrollbar-color: #FFB81C #f1f1f1;
     }
 }
 
-/* Keep all form controls transparent */
+/* Keep all form controls transparent - works in all browsers */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control {
     background-color: transparent !important;
+    -webkit-background-color: transparent !important;
 }
 
 /* Section Titles Custom Css */
@@ -41,42 +46,52 @@
     margin-top: 120px !important;
 }
 
-/* For all states - focus, filled, active */
+/* For all states - focus, filled, active - with prefix for Safari */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:focus,
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:active,
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control.filled {
     background-color: transparent !important;
+    -webkit-background-color: transparent !important;
 }
 
-/* For select elements which often have different styling */
+/* For select elements which often have different styling across browsers */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 select.ff-el-form-control {
     background-color: transparent !important;
+    -webkit-background-color: transparent !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 /* This targets inputs that have been interacted with */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-is-filled .ff-el-form-control,
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-is-active .ff-el-form-control {
     background-color: transparent !important;
+    -webkit-background-color: transparent !important;
 }
 
 /* For textarea elements */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 textarea.ff-el-form-control {
     background-color: transparent !important;
+    -webkit-background-color: transparent !important;
 }
 
 /* For checkboxes and radio buttons */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 input[type="checkbox"],
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 input[type="radio"] {
     background-color: transparent !important;
+    -webkit-background-color: transparent !important;
 }
 
 /* For their labels */
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-check-label {
     background-color: transparent !important;
+    -webkit-background-color: transparent !important;
 }
 
 .ff-el-form-control>input {
     background-color: transparent;
+    -webkit-background-color: transparent;
 }
 
 /* Remove background on inputs after typing in data */
@@ -90,8 +105,16 @@ input[type="file"] {
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:focus,
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-webkit-autofill:active {
     transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     -webkit-text-fill-color: #000 !important;
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+}
+
+/* Firefox autofill styling */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-moz-autofill,
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 input:-moz-autofill:focus {
+    background-color: transparent !important;
+    color: #000 !important;
 }
 
 /* Masquer complètement le bouton Précédent */
@@ -99,7 +122,8 @@ input[type="file"] {
     display: none !important;
 }*/
 
-/* Style de la barre de défilement pour Chrome, Edge et Safari */
+/* Cross-browser scrollbar styling */
+/* For WebKit browsers (Chrome, Safari, newer versions of Opera) */
 .fluent_form_90::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -123,7 +147,7 @@ input[type="file"] {
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 {
     max-width: 1200px;
     margin: 0 auto;
-    font-family: 'Arial', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
 }
 
 /* Conteneur des questions pour assurer l'espace nécessaire */
@@ -139,11 +163,14 @@ input[type="file"] {
     padding: 12px 15px;
     height: auto;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:focus {
     border-color: #0066CC;
     box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
+    outline: none;
+    /* Consistent focus across browsers */
 }
 
 /* Style des étiquettes */
@@ -154,7 +181,7 @@ input[type="file"] {
     font-size: 16px;
 }
 
-/* Style du bouton jaune */
+/* Style du bouton jaune - using multiple transform properties for cross-browser compatibility */
 .elementor-1066726 .elementor-element.elementor-element-cce00c9 .fluentform-widget-wrapper .ff-el-group .ff-btn-submit {
     background-color: #FFB81C !important;
     color: white !important;
@@ -164,15 +191,24 @@ input[type="file"] {
     border: none !important;
     font-size: 16px !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+    -webkit-transition: all 0.3s ease !important;
+    -moz-transition: all 0.3s ease !important;
+    -o-transition: all 0.3s ease !important;
     transition: all 0.3s ease !important;
     text-transform: none !important;
+    -webkit-appearance: none;
+    /* Remove default styling in Safari */
+    -moz-appearance: none;
+    appearance: none;
 }
-
-
 
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-btn-submit:hover {
     background-color: #F5A700 !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+    -webkit-transform: translateY(-2px) !important;
+    -moz-transform: translateY(-2px) !important;
+    -ms-transform: translateY(-2px) !important;
+    -o-transform: translateY(-2px) !important;
     transform: translateY(-2px) !important;
 }
 
@@ -191,7 +227,22 @@ input[type="file"] {
     margin-top: 30px;
 }
 
-/* Style des placeholders */
+/* Style des placeholders with cross-browser compatibility */
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control::-webkit-input-placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+}
+
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control::-moz-placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+}
+
+.fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control:-ms-input-placeholder {
+    color: #A0A0A0;
+    opacity: 0.8;
+}
+
 .fluentform-widget-wrapper.fluentform-widget-wrapper-90 .ff-el-form-control::placeholder {
     color: #A0A0A0;
     opacity: 0.8;
@@ -224,13 +275,12 @@ input[type="file"] {
     }
 }
 
-/* Styling for the file inputs */
+/* Styling for the file inputs - cross-browser compatible */
 .ff_file_upload_holder input[type="file"],
 .ff_file_upload_holder .ff_upload_btn {
     display: none !important;
     visibility: hidden;
 }
-
 
 .ff_file_upload_holder {
     position: relative;
@@ -246,9 +296,17 @@ input[type="file"] {
     height: 40px;
     border-radius: 10px;
     border: 1px solid #6b6b6b;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     cursor: pointer;
 }
@@ -258,6 +316,8 @@ input[type="file"] {
     position: absolute;
     top: 50%;
     right: 15px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     width: 20px;
     height: 25px;
@@ -268,8 +328,7 @@ input[type="file"] {
     cursor: pointer;
 }
 
-/* The multiple choices CSS styling part */
-
+/* The multiple choices CSS styling part - cross-browser compatible */
 /* Container styling */
 .choices {
     border: 1px solid #ccc !important;
@@ -295,18 +354,21 @@ input[type="file"] {
     content: none !important;
 }
 
-/* Custom dropdown arrow */
+/* Custom dropdown arrow with cross-browser compatible transform */
 .choices[data-type*="select-multiple"]:after {
     content: "" !important;
     position: absolute !important;
     right: 11.5px !important;
     top: 50% !important;
+    -webkit-transform: translateY(-50%) rotate(45deg) !important;
+    -ms-transform: translateY(-50%) rotate(45deg) !important;
     transform: translateY(-50%) rotate(45deg) !important;
     width: 8px !important;
     height: 8px !important;
     border-right: 2px solid #999 !important;
     border-bottom: 2px solid #999 !important;
-    transition: transform 0.2s ease-in-out !important;
+    -webkit-transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out !important;
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out !important;
     z-index: 1 !important;
     pointer-events: none !important;
     display: block !important;
@@ -318,7 +380,22 @@ input[type="file"] {
     content: "" !important;
 }
 
-/* Input placeholder (native field) */
+/* Input placeholder cross-browser compatibility */
+.choices__input::-webkit-input-placeholder {
+    color: #666 !important;
+    opacity: 1 !important;
+}
+
+.choices__input::-moz-placeholder {
+    color: #666 !important;
+    opacity: 1 !important;
+}
+
+.choices__input:-ms-input-placeholder {
+    color: #666 !important;
+    opacity: 1 !important;
+}
+
 .choices__input::placeholder {
     color: #666 !important;
     opacity: 1 !important;
@@ -331,6 +408,8 @@ input[type="file"] {
     position: absolute !important;
     left: 10px !important;
     top: 50% !important;
+    -webkit-transform: translateY(-50%) !important;
+    -ms-transform: translateY(-50%) !important;
     transform: translateY(-50%) !important;
     pointer-events: none !important;
 }
@@ -340,8 +419,10 @@ input[type="file"] {
     display: none !important;
 }
 
-/* Rotate arrow when dropdown is open */
+/* Rotate arrow when dropdown is open - cross-browser transform */
 .choices[aria-expanded="true"]:after {
+    -webkit-transform: translateY(-25%) rotate(-135deg) !important;
+    -ms-transform: translateY(-25%) rotate(-135deg) !important;
     transform: translateY(-25%) rotate(-135deg) !important;
 }
 
@@ -350,6 +431,7 @@ input[type="file"] {
     border: none !important;
     border-radius: 0 0 5px 5px !important;
     margin-top: -1px !important;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
     scrollbar-width: thin !important;
     scrollbar-color: #FFB81C #f1f1f1 !important;
@@ -362,6 +444,9 @@ input[type="file"] {
     font-size: 14px !important;
     color: #666 !important;
     cursor: pointer !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
     user-select: none !important;
 }
 
@@ -371,12 +456,15 @@ input[type="file"] {
     position: absolute !important;
     left: 10px !important;
     top: 50% !important;
+    -webkit-transform: translateY(-50%) !important;
+    -ms-transform: translateY(-50%) !important;
     transform: translateY(-50%) !important;
     width: 18px !important;
     height: 18px !important;
     border: 1px solid #ccc !important;
     border-radius: 2px !important;
     background-color: white !important;
+    -webkit-transition: background-color 0.2s ease !important;
     transition: background-color 0.2s ease !important;
 }
 
@@ -386,12 +474,14 @@ input[type="file"] {
     border-color: #FFB81C !important;
 }
 
-/* Add checkmark to selected items */
+/* Add checkmark to selected items with cross-browser transform */
 .choices__list--dropdown .choices__item.is-selected:after {
     content: "" !important;
     position: absolute !important;
     left: 16px !important;
     top: 50% !important;
+    -webkit-transform: translateY(-65%) rotate(45deg) !important;
+    -ms-transform: translateY(-65%) rotate(45deg) !important;
     transform: translateY(-65%) rotate(45deg) !important;
     width: 5px !important;
     height: 10px !important;
@@ -421,6 +511,7 @@ input[type="file"] {
 /* Focus state */
 .choices:focus-within {
     border-color: #0066CC !important;
+    -webkit-box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1) !important;
     box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1) !important;
 }
 
@@ -438,7 +529,7 @@ input[type="file"] {
     content: none !important;
 }
 
-/* WebKit scrollbar styling */
+/* WebKit scrollbar styling (Chrome, Safari, newer versions of Opera) */
 .choices__list--dropdown::-webkit-scrollbar {
     width: 4px !important;
 }
@@ -457,24 +548,26 @@ input[type="file"] {
     background: #e5a719 !important;
 }
 
-
-/* style input radio check */
+/* style input radio check - cross-browser compatible */
 .ff-el-form-check-input[type="radio"]:checked {
     border-color: #023047 !important;
     background: #fff !important;
 }
 
 .ff-el-form-check-input[type="radio"] {
-    appearance: none !important;
     -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
     width: 18px !important;
     height: 18px !important;
     border: 2px solid #d1d5db !important;
     border-radius: 50% !important;
     padding: 0 !important;
+    -webkit-transition: all 0.2s ease !important;
     transition: all 0.2s ease !important;
     position: relative !important;
     cursor: pointer !important;
+    -ms-flex-negative: 0 !important;
     flex-shrink: 0 !important;
 }
 
@@ -483,6 +576,8 @@ input[type="file"] {
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
+    -webkit-transform: translate(-50%, -50%) !important;
+    -ms-transform: translate(-50%, -50%) !important;
     transform: translate(-50%, -50%) !important;
     width: 8px !important;
     height: 8px !important;
@@ -490,20 +585,25 @@ input[type="file"] {
     border-radius: 50% !important;
 }
 
-/* File upload preview */
+/* File upload preview with flexbox prefixes */
 .ff-upload-preview {
     border: 1px solid #023047 !important;
     background-color: #f4faff !important;
     padding: 0px 10px !important;
     border-radius: 8px !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
     align-items: center !important;
     gap: 12px !important;
-    font-family: 'Inter', sans-serif !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif !important;
     max-width: 760px !important;
 }
 
 .ff-upload-thumb {
+    -ms-flex-negative: 0 !important;
     flex-shrink: 0 !important;
     width: 50px !important;
     height: 50px !important;
@@ -520,9 +620,18 @@ input[type="file"] {
 }
 
 .ff-upload-details {
+    -webkit-box-flex: 1 !important;
+    -ms-flex-positive: 1 !important;
     flex-grow: 1 !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: column !important;
     flex-direction: column !important;
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
     justify-content: center !important;
     gap: 4px !important;
     min-width: 0 !important;
