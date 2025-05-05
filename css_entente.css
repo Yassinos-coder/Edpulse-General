@@ -1,5 +1,5 @@
 /* To remove some kind of left border the containers */
-.elementor-14511 .elementor-element.elementor-element-ad90544 > .elementor-element-populated {
+.elementor-14511 .elementor-element.elementor-element-ad90544>.elementor-element-populated {
     border: none !important;
 }
 
@@ -74,10 +74,10 @@ a {
 /* Navbar  */
 #navBar {
     border-radius: 10px;
-    box-shadow: 0px 0px 8px 1px rgba(196, 196, 196, 0.75);
-    -webkit-box-shadow: 0px 0px 8px 1px rgba(196, 196, 196, 0.75);
-    -moz-box-shadow: 0px 0px 8px 1px rgba(196, 196, 196, 0.75);
-    padding: 20px;
+    box-shadow: 0px 4px 9px 3px #00000008;
+    -webkit-box-shadow: 0px 4px 9px 3px #00000008;
+    -moz-box-shadow: 0px 4px 9px 3px #00000008;
+    padding: 10px;
 }
 
 .my_nav-item:hover {
@@ -92,15 +92,12 @@ a {
 }
 
 .my_content {
-    flex: 1;
-    padding: 20px;
     background-color: white;
     overflow: auto;
-    height: 70vh;
+    height: 60vh;
     overflow-y: scroll;
     overflow-x: hidden;
     transition: all 0.3s ease;
-    width: calc(100% - 10%);
     position: relative;
     padding-left: 15px;
 }
@@ -112,20 +109,29 @@ a {
 }
 
 .my_content::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #F8F8F8;
     /* Track color */
 }
 
 .my_content::-webkit-scrollbar-thumb {
-    background: #023047;
+    background: #EBEBEB;
     /* Scrollbar thumb color */
     border-radius: 10px;
     /* Rounded corners */
 }
 
 .my_content::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #EBEBEB;
     /* Hover color for the scrollbar thumb */
+}
+
+.main_content {
+    -webkit-box-shadow: 0px 4px 9px 3px #00000008;
+    -moz-box-shadow: 0px 4px 9px 3px #00000008;
+    box-shadow: 0px 4px 9px 3px #00000008;
+    border-radius: 10px;
+    border: none;
+    width: 1300px !important;
 }
 
 .section {
@@ -204,6 +210,19 @@ a {
 .e_content_title {
     border-bottom: 2px solid #e5e7eb;
     padding-bottom: 2%;
+    background-color: #f6f6f6;
+    padding: 50px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+}
+
+.e_content_title_second {
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 2%;
+    background-color: #f6f6f6;
+    padding: 20px;
+
 }
 
 #myAcceptBtn {
@@ -216,15 +235,18 @@ a {
     border-radius: 20px;
     color: white;
     font-weight: 600;
+    box-shadow: 0px 4px 10px 0px #00000040;
+    border: 3px solid #FFB606;
 }
 
 #myDeclineBtn {
     background-color: white;
     color: #FFB606;
-    border: 1px solid #FFB606;
+    border: 3px solid #FFB606;
     padding: 5px 30px 5px 30px;
     border-radius: 20px;
     font-weight: 600;
+    box-shadow: 0px 4px 10px 0px #00000040;
 }
 
 #myDeclineBtn:hover {
