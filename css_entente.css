@@ -13,13 +13,11 @@
     font-family: 'Lato', sans-serif;
 }
 
-
 .header {
     align-items: center;
     padding: 1rem 1.5rem;
     border-bottom: 1px solid #e5e7eb;
 }
-
 
 .my_sidebar {
     width: 280px;
@@ -27,25 +25,6 @@
     padding: 20px 0;
     overflow: hidden;
     transition: width 0.3s ease;
-}
-
-.collapse-btn {
-    display: flex;
-    align-items: center;
-    padding: 8px 24px;
-    color: #6B7280;
-    font-size: 14px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 16px;
-}
-
-.collapse-btn:hover {
-    color: #023047;
-    background-color: transparent;
 }
 
 .my_nav-menu {
@@ -60,7 +39,6 @@
     transition: all 0.2s ease;
 }
 
-/* Some styling to make the svg align with the text */
 a {
     display: flex;
     align-items: center;
@@ -71,7 +49,7 @@ a {
     font-weight: 600;
 }
 
-/* Navbar  */
+/* Navbar */
 #navBar {
     border-radius: 10px;
     box-shadow: 0px 4px 9px 3px #00000008;
@@ -83,13 +61,12 @@ a {
 .my_nav-item:hover {
     color: #023047;
     font-weight: 600;
-
 }
 
 .my_nav-item a.active {
     color: #023047;
     font-weight: 600;
-  }
+}
 
 .my_content {
     background-color: white;
@@ -102,27 +79,21 @@ a {
     padding-left: 15px;
 }
 
-
 .my_content::-webkit-scrollbar {
     width: 5px;
-    /* Width of the scrollbar */
 }
 
 .my_content::-webkit-scrollbar-track {
     background: #F8F8F8;
-    /* Track color */
 }
 
 .my_content::-webkit-scrollbar-thumb {
     background: #EBEBEB;
-    /* Scrollbar thumb color */
     border-radius: 10px;
-    /* Rounded corners */
 }
 
 .my_content::-webkit-scrollbar-thumb:hover {
     background: #EBEBEB;
-    /* Hover color for the scrollbar thumb */
 }
 
 .main_content {
@@ -157,52 +128,6 @@ a {
     width: 120%;
 }
 
-.collapse-btn {
-    cursor: pointer;
-
-}
-
-/* Change button text when sidebar is collapsed */
-.sidebar.collapsed .collapse-btn::after {
-    content: '  » ';
-}
-
-.sidebar:not(.collapsed) .collapse-btn::after {
-    content: ' « ';
-}
-
-/* Hide the original text of the button */
-.collapse-btn span {
-    display: none;
-
-}
-
-/* Add styles for the expand button that shows on collapse */
-.expand-btn {
-    position: fixed;
-    left: 0;
-    top: 40%;
-    transform: translateY(-20%);
-    color: #023047;
-    padding: 10px;
-    background: #fff;
-    /* border: 1px solid #ccc; */
-    border-left: none;
-    cursor: pointer;
-    display: none;
-    z-index: 1000;
-}
-
-.expand-btn:hover {
-    background-color: #023047;
-    color: white;
-}
-
-.sidebar.collapsed+.expand-btn {
-    display: block;
-}
-
-
 /* .content {
     border-left: 1px solid #e5e7eb;
 } */
@@ -214,7 +139,6 @@ a {
     padding: 50px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-
 }
 
 .e_content_title_second {
@@ -222,7 +146,6 @@ a {
     padding-bottom: 2%;
     background-color: #f6f6f6;
     padding: 20px;
-
 }
 
 #myAcceptBtn {
@@ -233,7 +156,6 @@ a {
     margin-left: auto;
     padding: 5px 30px 5px 30px;
     border-radius: 20px;
-    color: white;
     font-weight: 600;
     box-shadow: 0px 4px 10px 0px #00000040;
     border: 3px solid #FFB606;
@@ -261,12 +183,7 @@ a {
 
     .my_content {
         width: 100% !important;
-        /* Override any existing width */
         margin-left: 0 !important;
-    }
-
-    .expand-btn {
-        display: none !important;
     }
 
     #myAcceptBtn {
@@ -305,7 +222,7 @@ a {
     color: white !important;
 }
 
-@media screen and (max-width : 767px){
+@media screen and (max-width: 767px) {
     .elementor-14511 .elementor-element.elementor-element-8025c21 {
         padding: 0 !important;
     }
