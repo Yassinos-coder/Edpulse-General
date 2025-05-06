@@ -1,6 +1,6 @@
 const createOrDeleteTutor = async () => {
     const SUPABASE_URL = "https://evzxlyclzesodzorchku.supabase.co/rest/v1/new_tutorax_tutoring_applicants";
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV2enhseWNsemVzb2R6b3JjaGt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjUzNDE0MTUsImV4cCI6MjA0MDkxNzQxNX0.mkGiQ-8x_u_7ZfhLSGUCnHpcRGkGp5bQXQcYeSlAM_k"; // hide this in production
+    const SUPABASE_KEY = "{{supabasePublicKeyEdpulse}}"; // hide this in production
 
     const headers = {
         "Content-Type": "application/json",
@@ -11,28 +11,28 @@ const createOrDeleteTutor = async () => {
     };
 
     let jemedeplaceslmt = "1. Uniquement Trp Commun : Oui";
-    let dob = "1. Birthdate : 31/01/2025";
-    let address_complete = "1. Address 1 Address Line 1 : Adresse 1, 1. Address 1 Address Line 2 : complement adrtesse 1";
+    let dob = "1. Birthdate : 27/05/2025";
+    let address_complete = "1. Submission User Inputs Address 1 : Maârif, APPT 4, Casablanca, 20100";
 
     jemedeplaceslmt = jemedeplaceslmt.toLowerCase().includes("oui");
 
     const [day, month, year] = dob.split('/'); // Split the date string by "/"
     const formatted_date = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
     const data = {
-        "first_name": "1. Names First Name : Nazire",
-        "last_name": "1. Names Last Name : tazwi",
+        "first_name": "1. Names First Name : Yassine",
+        "last_name": "1. Names Last Name : Castro",
         "application_status": "tutor_pending",
         "branch": "1. Branch : Tutorat QC",
-        "email": "1. Email : mail@mailtomail.com",
-        "phone": "1. Phone : 15062345678",
-        "etudes_details": "1. Description Etudes : mes etudes sont tres bien, au faite jeter hiper for on math haha",
+        "email": "1. Email : yassine.castro@edpulse.com",
+        "phone": "1. Phone : 212654593277",
+        "etudes_details": "1. Description Etudes : Non",
         "address": address_complete,
-        "zipcode": "1. Address 1 Zip : 15120",
-        "province": "1. Province : Ontario",
+        "zipcode": "1. Address 1 Zip : 20100",
+        "province": "1. Province : Alberta",
         "deplace_slmt_en_trp_en_commun": jemedeplaceslmt,
-        "city": "1. Address 1 City : mycity",
+        "city": "1. Address 1 City : Casablanca",
         "date_of_birth": formatted_date,
-        "gender": "1. Gender : Préfère ne pas répondre"
+        "gender": "1. Gender : Homme"
     };
 
     const condition = { "email": "eq." + data.email };
@@ -46,7 +46,10 @@ const createOrDeleteTutor = async () => {
         body: JSON.stringify(data),
     });
 
-    const json = await response.json();
+    const response_of_adding = await response.json();
+
+
+    return response_of_adding
 
 
 };
