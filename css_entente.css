@@ -199,15 +199,18 @@ a {
     border-radius: 40px;
     font-size: 16px !important;
     padding: 5px 30px 5px 30px;
-    background-color: #023047 !important;
+    color: white !important;
+    background-color: #FFB606 !important;
+    border: none !important;
 }
 
 .ff-btn-prev {
     border-radius: 40px;
     font-size: 16px !important;
     padding: 5px 30px 5px 30px;
-    background-color: #023047 !important;
-    color: white;
+    background-color: #FFB606 !important;
+    color: white !important;
+    border: none !important;
 }
 
 .ff-el-progress-status {
