@@ -1,0 +1,29 @@
+#mainFormContainer {
+    margin: auto !important;
+    width: 100% !important;
+}
+
+.fluentform .ff-el-group {
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid #F7F7F8
+}
+
+.fluentform input[type=checkbox],
+.fluentform input[type=radio] {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px !important;
+    color: #023047;
+}
+
+.ff-el-form-check-label {
+    color: #023047 !important;
+    font-weight: 600 !important;
+    font-size: 25px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 10px;
+}
