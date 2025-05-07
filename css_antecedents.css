@@ -1,3 +1,15 @@
+/* Title & Paragraph stuff */
+#title {
+    font-size: 48px !important;
+    color: #023047 !important;
+    font-weight: 600 !important;
+}
+
+#textBelowTitle {
+    color: #023047 !important;
+    font-size: 25px !important;
+}
+
 /* Center the main form container and ensure full width */
 #mainFormContainer {
     margin: auto !important;
@@ -18,6 +30,7 @@
     height: 20px;
     border-radius: 10px !important;
     color: #023047;
+    accent-color: #023047;
 }
 
 /* Align checkbox/radio input correctly within label */
@@ -98,4 +111,15 @@
     border: 2px dashed #CBCBCB !important;
     border-style: dashed;
     padding: 10px !important;
+}
+
+/* Submit Button Style */
+.elementor-15086 .elementor-element.elementor-element-d9445c8 .fluentform-widget-wrapper .ff-el-group .ff-btn-submit {
+    background-color: #FFB606 !important;
+    color: white !important;
+}
+
+.fluentform .ff_submit_btn_wrapper {
+    padding: 0 !important;
+    border: none !important;
 }
