@@ -11,9 +11,11 @@
     border-bottom: 1px solid #e5e7eb;
 }
 
-#search-icon-parent-container {
-
+.elementor-element.elementor-element-c84225e.elementor-widget.elementor-widget-html {
+    display: flex !important;
+    justify-content: flex-end !important;
 }
+
 
 .search-container {
     position: relative;
