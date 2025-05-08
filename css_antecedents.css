@@ -29,8 +29,15 @@
     width: 20px;
     height: 20px;
     border-radius: 10px !important;
-    color: #023047;
-    accent-color: #023047;
+    color: #023047 !important;
+    accent-color: #023047 !important;
+    cursor: pointer !important;
+}
+
+.fluentform input[type=checkbox]:hover {
+    color: #023047 !important;
+    accent-color: #023047 !important;
+    cursor: pointer !important;
 }
 
 /* Align checkbox/radio input correctly within label */
