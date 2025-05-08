@@ -13,6 +13,25 @@
     font-family: 'Lato', sans-serif;
 }
 
+
+
+.search-container {
+    margin-top: 2px;
+    text-align: right;
+
+}
+
+.search-container input {
+    width: 16rem;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #f3f4f6;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+}
+
+
 .header {
     align-items: center;
     padding: 1rem 1.5rem;
@@ -128,9 +147,9 @@ a {
     width: 120%;
 }
 
-/* .content {
+ .content {
     border-left: 1px solid #e5e7eb;
-} */
+} 
 
 .e_content_title {
     border-bottom: 2px solid #e5e7eb;
