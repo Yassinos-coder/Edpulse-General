@@ -1,0 +1,288 @@
+.service-agreement {
+    width: 100%;
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+
+.header {
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#search-icon-parent-container {
+
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+    text-align: right;
+    margin-top: 2px;
+}
+
+.search-container input {
+    width: 16rem;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    /* left padding increased for icon space */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #f3f4f6;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    border: none;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #5a6d75;
+    pointer-events: none;
+    width: 20px;
+}
+
+
+
+.my_sidebar {
+    width: 280px;
+    background: white;
+    padding: 20px 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.collapse-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 24px;
+    color: #6B7280;
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.collapse-btn:hover {
+    color: #023047;
+    background-color: transparent;
+}
+
+.my_nav-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.my_nav-item {
+    padding: 10px 24px;
+    color: #1F2937;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.my_nav-item:hover {
+    color: #023047;
+    font-weight: 600;
+
+}
+
+.nav-item.active {
+    color: #023047;
+    font-weight: 600;
+}
+
+.my_content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9fafb;
+    overflow: auto;
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+    width: calc(100% - 10%);
+    position: relative;
+}
+
+
+.my_content::-webkit-scrollbar {
+    width: 5px;
+    /* Width of the scrollbar */
+}
+
+.my_content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Track color */
+}
+
+.my_content::-webkit-scrollbar-thumb {
+    background: #023047;
+    /* Scrollbar thumb color */
+    border-radius: 10px;
+    /* Rounded corners */
+}
+
+.my_content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Hover color for the scrollbar thumb */
+}
+
+.section {
+    padding-top: 10px;
+}
+
+.sidebar {
+    transition: transform 0.3s ease, width 0.3s ease;
+    background: #fff;
+    height: 100%;
+    position: relative;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 0;
+}
+
+/* When sidebar is collapsed, expand content */
+.sidebar.collapsed+.my_content,
+.sidebar.collapsed~.my_content {
+    margin-left: -19%;
+    width: 120%;
+}
+
+.collapse-btn {
+    cursor: pointer;
+
+}
+
+/* Change button text when sidebar is collapsed */
+.sidebar.collapsed .collapse-btn::after {
+    content: '  » ';
+}
+
+.sidebar:not(.collapsed) .collapse-btn::after {
+    content: ' « ';
+}
+
+/* Hide the original text of the button */
+.collapse-btn span {
+    display: none;
+
+}
+
+/* Add styles for the expand button that shows on collapse */
+.expand-btn {
+    position: fixed;
+    left: 0;
+    top: 40%;
+    transform: translateY(-20%);
+    color: #023047;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-left: none;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+}
+
+.expand-btn:hover {
+    background-color: #023047;
+    color: white;
+}
+
+.sidebar.collapsed+.expand-btn {
+    display: block;
+}
+
+
+.content {
+    border-left: 1px solid #e5e7eb;
+}
+
+.e_content_title {
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 2%;
+}
+
+#myAcceptBtn {
+    background-color: #023047;
+    color: white;
+    border: 1px solid #023047;
+    display: block;
+    margin-left: auto;
+    padding: 5px 30px 5px 30px;
+    border-radius: 20px;
+}
+
+#myDeclineBtn {
+    background-color: white;
+    color: #023047;
+    border: 1px solid #023047;
+    padding: 5px 30px 5px 30px;
+    border-radius: 20px;
+}
+
+#myDeclineBtn:hover {
+    background-color: transparent;
+}
+
+/* Responsive styles for mobile */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .my_content {
+        width: 100% !important;
+        /* Override any existing width */
+        margin-left: 0 !important;
+    }
+
+    .expand-btn {
+        display: none !important;
+    }
+
+    #myAcceptBtn {
+        display: none !important;
+    }
+
+    #myDeclineBtn {
+        display: none !important;
+    }
+}
+
+.ff-btn-next {
+    border-radius: 40px;
+    font-size: 16px !important;
+    padding: 5px 30px 5px 30px;
+    background-color: #023047 !important;
+}
+
+.ff-btn-prev {
+    border-radius: 40px;
+    font-size: 16px !important;
+    padding: 5px 30px 5px 30px;
+    background-color: #023047 !important;
+    color: white;
+}
+
+.ff-el-progress-status {
+    display: none !important;
+}
+
+.ff-el-progress-bar {
+    background-color: #023047 !important;
+}
+
+.ff-el-progress-bar span {
+    color: white !important;
+}
