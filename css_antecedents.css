@@ -19,6 +19,7 @@
 /* Style form element groups: padding, rounded corners, and border */
 .fluentform .ff-el-group {
     padding: 40px;
+    padding-left: 20px;
     border-radius: 10px;
     border: 2px solid #F7F7F8;
 }
@@ -26,7 +27,7 @@
 /* Style checkboxes and radio buttons: size, roundness, and color */
 .fluentform input[type=checkbox],
 .fluentform input[type=radio] {
-    width: 20px;
+    width: 25px;
     height: 20px;
     border-radius: 10px !important;
     color: #023047 !important;
