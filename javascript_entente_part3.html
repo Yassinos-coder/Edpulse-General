@@ -1,0 +1,155 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Append styles
+    const style = document.createElement("style");
+    style.textContent = `
+      .my_nav-item.active { font-weight: bold; }
+      .search-highlight {
+        background-color: #ded9d9;
+        border-radius: 2px;
+        padding: 0 2px;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Initialize
+    const searchInput = document.getElementById("searchInput");
+    const contentArea = document.querySelector(".my_content");
+    const navItems = [...document.querySelectorAll(".my_nav-item")];
+    const EXCLUDED_IDS = ["signature-contrat", "fluent-form-entente"];
+
+    let sections = [];
+
+    const initializeSections = () => {
+      sections = navItems
+        .map((item) => {
+          const sectionId = item.getAttribute("href");
+          const section = document.querySelector(sectionId);
+          return section && !EXCLUDED_IDS.includes(section.id)
+            ? { element: section, navItem: item }
+            : null;
+        })
+        .filter(Boolean);
+    };
+
+    const highlightNavItem = () => {
+      const scrollTop = contentArea.scrollTop;
+      const containerHeight = contentArea.clientHeight;
+
+      navItems.forEach((item) => item.classList.remove("active"));
+
+      for (let i = 0; i < sections.length; i++) {
+        const { element, navItem } = sections[i];
+        const top = element.offsetTop - contentArea.offsetTop;
+        const bottom = top + element.offsetHeight;
+
+        const inView = scrollTop >= top - 50 && scrollTop < bottom;
+        const atBottom =
+          i === sections.length - 1 &&
+          scrollTop + containerHeight >= contentArea.scrollHeight;
+
+        if (inView || atBottom) {
+          navItem.classList.add("active");
+          break;
+        }
+      }
+    };
+
+    const removeHighlights = (element) => {
+      element.querySelectorAll(".search-highlight").forEach((highlight) => {
+        highlight.replaceWith(document.createTextNode(highlight.textContent));
+      });
+    };
+
+    const highlightText = (element, term) => {
+      if (
+        !term ||
+        EXCLUDED_IDS.includes(element.id) ||
+        element.closest("#fluent-form-entente, #signature-contrat")
+      ) {
+        return;
+      }
+
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const regex = new RegExp(`(${term})`, "gi");
+      const nodes = [];
+
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+
+      nodes.forEach((node) => {
+        const text = node.textContent;
+        if (text.trim() && regex.test(text)) {
+          const wrapper = document.createElement("span");
+          wrapper.innerHTML = text.replace(
+            regex,
+            '<span class="search-highlight">$1</span>'
+          );
+          node.parentNode.replaceChild(wrapper, node);
+        }
+      });
+    };
+
+    const debounce = (func, wait) => {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    };
+
+    let noResultsDiv = null;
+
+    const performSearch = () => {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+
+      if (noResultsDiv) {
+        noResultsDiv.remove();
+        noResultsDiv = null;
+      }
+
+      const allSections = contentArea.querySelectorAll(
+        "section.elementor-inner-section"
+      );
+      let hasResults = false;
+
+      allSections.forEach((section) => {
+        const isExcluded =
+          section.querySelector("#fluent-form-entente") ||
+          section.id === "signature-contrat";
+        if (isExcluded) return;
+
+        removeHighlights(section);
+
+        const text = section.textContent.toLowerCase();
+        if (!searchTerm || text.includes(searchTerm)) {
+          section.style.display = "";
+          if (searchTerm) highlightText(section, searchTerm);
+          hasResults = true;
+        } else {
+          section.style.display = "none";
+        }
+      });
+
+      if (searchTerm && !hasResults) {
+        noResultsDiv = document.createElement("div");
+        noResultsDiv.textContent = "Aucun résultat trouvé";
+        noResultsDiv.style.cssText = "text-align: center; padding: 20px;";
+        const formSection = contentArea
+          .querySelector("#fluent-form-entente")
+          ?.closest("section");
+        (formSection?.parentNode || contentArea).insertBefore(
+          noResultsDiv,
+          formSection || null
+        );
+      }
+
+      highlightNavItem();
+    };
+
+    // Initialize and bind
+    initializeSections();
+    contentArea.addEventListener("scroll", highlightNavItem);
+    searchInput.addEventListener("input", debounce(performSearch, 150));
+    highlightNavItem();
+  });
+</script>
