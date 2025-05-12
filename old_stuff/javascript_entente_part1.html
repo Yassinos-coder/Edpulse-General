@@ -1,0 +1,171 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener("load", function () {
+      // Add CSS styles for animations and disabled state
+      const style = document.createElement("style");
+      style.textContent = `
+        .my_button {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            opacity: 0;
+            transform: translateY(-60px);
+        }
+
+        .my_button:disabled {
+            cursor: not-allowed;
+            background-color: #cccccc;
+            border-color: #999999;
+        }
+
+        /* Visible state */
+        .my_button.visible {
+            opacity: 0.4;
+            transform: translateY(0);
+        }
+
+        /* Hidden without display: none to allow animation */
+        .my_button.animate-hidden {
+            opacity: 0;
+            transform: translateY(-60px);
+        }
+
+        /* Completely hidden state */
+        .my_button.fully-hidden {
+            display: none !important;
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Smooth scrolling functionality
+      const contentArea = document.querySelector(".my_content");
+      if (contentArea) {
+        document.querySelectorAll(".my_nav-item a").forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const scrollOffset = 100; // Adjust this value as needed
+              const targetPosition =
+                targetElement.getBoundingClientRect().top -
+                contentArea.getBoundingClientRect().top +
+                contentArea.scrollTop -
+                scrollOffset;
+              contentArea.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+
+            }
+          });
+        });
+
+        const options = {
+          root: document.querySelector(".my_content"),
+          rootMargin: "0px 0px -70% 0px",
+          threshold: 0.1,
+        };
+
+        const callback = (entries) => {
+          const visibleEntries = entries.filter(
+            (entry) => entry.isIntersecting
+          );
+
+          if (visibleEntries.length > 0) {
+            visibleEntries.sort(
+              (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+            );
+
+            const firstVisible = visibleEntries[0];
+            const id = firstVisible.target.getAttribute("id");
+
+            console.log("Active section:", id);
+
+            // Clear all current active styles
+            document.querySelectorAll(".my_nav-item").forEach((link) => {
+              link.style.fontWeight = "normal";
+              link.style.opacity = "1";
+              link.style.color = "#023047"; // or whatever default
+            });
+
+            // Find and style the active link
+            const activeLink = document.querySelector(
+              `.my_nav-item[href="#${id}"]`
+            );
+            if (activeLink) {
+              activeLink.style.fontWeight = "bold";
+              activeLink.style.opacity = "1";
+              activeLink.style.color = "#023047"; // or your active color
+            }
+          }
+        };
+
+        const observer = new IntersectionObserver(callback, options);
+
+        document.querySelectorAll(".big-title[id]").forEach((section) => {
+          observer.observe(section);
+        });
+
+        // Button animation functionality
+        const acceptBtn = document.getElementById("myAcceptBtn");
+        const declineBtn = document.getElementById("myDeclineBtn");
+
+        if (acceptBtn && declineBtn) {
+          // Add the my_button class to both buttons
+          acceptBtn.classList.add("my_button");
+          declineBtn.classList.add("my_button");
+
+          // Function to check if the container is scrolled to the bottom
+          function checkScroll() {
+            const isScrolledToBottom =
+              contentArea.scrollTop + contentArea.clientHeight >=
+              contentArea.scrollHeight;
+
+            // Enable or disable the buttons based on scroll position
+            acceptBtn.disabled = !isScrolledToBottom;
+            declineBtn.disabled = !isScrolledToBottom;
+
+            if (isScrolledToBottom) {
+              // When reaching bottom, animate up and fade out
+              acceptBtn.classList.remove("fully-hidden");
+              declineBtn.classList.remove("fully-hidden");
+
+              // Remove visible class to trigger fade out animation
+              acceptBtn.classList.remove("visible");
+              declineBtn.classList.remove("visible");
+
+              // After animation completes, hide completely
+              setTimeout(() => {
+                acceptBtn.classList.add("fully-hidden");
+                declineBtn.classList.add("fully-hidden");
+              }, 500);
+            } else {
+              // Start fade in animation
+              acceptBtn.classList.remove("fully-hidden");
+              declineBtn.classList.remove("fully-hidden");
+
+              // Trigger reflow to ensure animation plays
+              void acceptBtn.offsetWidth;
+              void declineBtn.offsetWidth;
+
+              // Add visible class to trigger fade in animation
+              acceptBtn.classList.add("visible");
+              declineBtn.classList.add("visible");
+            }
+          }
+
+          // Initially disable and hide the buttons
+          acceptBtn.disabled = true;
+          declineBtn.disabled = true;
+          acceptBtn.classList.add("fully-hidden");
+          declineBtn.classList.add("fully-hidden");
+
+          // Initial check
+          checkScroll();
+
+          // Add a scroll event listener to the container
+          contentArea.addEventListener("scroll", checkScroll);
+        }
+      }
+    });
+  });
+</script>
