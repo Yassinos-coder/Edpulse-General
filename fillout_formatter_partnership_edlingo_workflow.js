@@ -1,100 +1,103 @@
 class DataInitializer {
-constructor(submissionData) {
-this.questions = submissionData; // Full submission data
+    constructor(submissionData) {
+        this.questions = submissionData; // Full submission data
 
-// Map human-readable keys to Fillout form field IDs
-this.FIELD_IDS = {
-courriel_vendeur: "jExk",
-courriel_charge_comptes_partenariat: "pQGZ",
-nom_partenaire: "h2mD",
-langues_formulaire_inscription: "q1br",
-type_partenaire: "75Hq",
-nouvelle_page_partenaire: "kCMr",
-id_tutor_cruncher: "rAXJ",
-resume_partenariat: "7PPv",
-ville: "gZAm",
-adresse: "r8w9",
-etat_province: "4Gim",
-code_postal: "vmFi",
-pays: "86xc",
-telephone: "5AUQ",
-courriel_4: "ma7F",
-url: "phxB",
-prenom_3: "v4Cc",
-nom_3: "vsJS",
-courriel_3: "k1aP",
-poste_titre_2: "ndu8",
-extension_num_poste: "5ig6",
-telephone_2: "fTN6",
-notes: "gAkb",
-nombre_personnes_contact_supplementaires: "i6ey",
+        // Map human-readable keys to Fillout form field IDs
+        this.FIELD_IDS = {
+            courriel_vendeur: "jExk",
+            courriel_charge_comptes_partenariat: "pQGZ",
+            nom_partenaire: "h2mD",
+            langues_formulaire_inscription: "q1br",
+            type_partenaire: "75Hq",
+            nouvelle_page_partenaire: "kCMr",
+            id_tutor_cruncher: "rAXJ",
+            resume_partenariat: "7PPv",
+            ville: "gZAm",
+            adresse: "r8w9",
+            etat_province: "4Gim",
+            code_postal: "vmFi",
+            pays: "86xc",
+            telephone: "5AUQ",
+            courriel_4: "ma7F",
+            url: "phxB",
+            prenom_3: "v4Cc",
+            nom_3: "vsJS",
+            courriel_3: "k1aP",
+            poste_titre_2: "ndu8",
+            extension_num_poste: "5ig6",
+            telephone_2: "fTN6",
+            notes: "gAkb",
+            nombre_personnes_contact_supplementaires: "i6ey",
 
-// Contact 1
-nom_1: "8Voj",
-prenom: "d8HW",
-poste_titre_1: "cTE3",
-courriel_2: "cgcG",
-extension_num_poste_2: "rDpn",
-telephone_3: "uJPL",
-langue_parlee_1: "gLJo",
-notes_1: "4ao3",
+            // Contact 1
+            nom_1: "8Voj",
+            prenom: "d8HW",
+            poste_titre_1: "cTE3",
+            courriel_2: "cgcG",
+            extension_num_poste_2: "rDpn",
+            telephone_3: "uJPL",
+            langue_parlee_1: "gLJo",
+            notes_1: "4ao3",
 
-// Contact 2
-nom: "5SpH",
-prenom_1: "pG2E",
-courriel_1: "57xK",
-poste_titre: "5vRE",
-extension_num_poste_3: "wBWC",
-telephone_4: "wmi5",
-langue_parlee: "fFuF",
-notes_2: "gemJ",
+            // Contact 2
+            nom: "5SpH",
+            prenom_1: "pG2E",
+            courriel_1: "57xK",
+            poste_titre: "5vRE",
+            extension_num_poste_3: "wBWC",
+            telephone_4: "wmi5",
+            langue_parlee: "fFuF",
+            notes_2: "gemJ",
 
-// Contact 3
-prenom_2: "rH9k",
-nom_2: "ubfb",
-courriel: "1ckD",
-poste_titre_3: "syQB",
-telephone_1: "9mEx",
-extension_num_poste_1: "aFjJ",
-langue_parlee_2: "oSMH",
-notes_3: "9d6J",
+            // Contact 3
+            prenom_2: "rH9k",
+            nom_2: "ubfb",
+            courriel: "1ckD",
+            poste_titre_3: "syQB",
+            telephone_1: "9mEx",
+            extension_num_poste_1: "aFjJ",
+            langue_parlee_2: "oSMH",
+            notes_3: "9d6J",
 
-// Tarification et sondages
-lieu_des_services: "e5Nd",
-qui_paye: "tw7K",
-cout_horaire_edlingo: "9V5C",
-tarifs_factures: "fUVV",
-frais_ouverture_dossier: "oN8N",
-montant_tarif_special_en_ligne: "7VDH",
-montant_tarif_special_a_domicile: "px6z",
-nombre_max_heures_permises: "iHiF",
-envoyons_courriels_sondage: "nbLY",
-nombre_heures_permises: "nNsz",
-heures_avant_premier_sondage: "xr4m",
-heures_avant_deuxieme_sondage: "ifux",
-heures_avant_troisieme_sondage: "bh6x"
-};
-}
+            // Tarification et sondages
+            lieu_des_services: "e5Nd",
+            qui_paye: "tw7K",
+            type_de_cours: "sab5",
+            noms_des_participants: "rsFY",
+            cout_horaire_edlingo: "9V5C",
+            tarifs_factures: "fUVV",
+            //frais_ouverture_dossier: "oN8N",
+            montant_tarif_special_en_ligne: "7VDH",
+            montant_tarif_special_a_domicile: "px6z",
+            nombre_max_heures_permises: "iHiF",
+            envoyons_courriels_sondage: "nbLY",
+            nombre_heures_permises: "p9PS",
+            heures_avant_premier_sondage: "xr4m",
+            heures_avant_deuxieme_sondage: "ifux",
+            heures_avant_troisieme_sondage: "bh6x"
+        };
 
-// Get the value of the field by ID
-getFieldValueById(fieldId, defaultValue = "N/A") {
-// Find the question by ID
-const question = this.questions.find(q => q.id === fieldId);
-// Return the value of the question or the default value
-return question && question.value !== null ? question.value : defaultValue;
-}
+    }
 
-// Initialize and map the data into the required format
-initializeMappedData() {
-const result = {};
+    // Get the value of the field by ID
+    getFieldValueById(fieldId, defaultValue = "N/A") {
+        // Find the question by ID
+        const question = this.questions.find(q => q.id === fieldId);
+        // Return the value of the question or the default value
+        return question && question.value !== null ? question.value : defaultValue;
+    }
 
-// Map all the fields using the FIELD_IDS mapping
-for (const [fieldName, fieldId] of Object.entries(this.FIELD_IDS)) {
-result[fieldName] = this.getFieldValueById(fieldId);
-}
+    // Initialize and map the data into the required format
+    initializeMappedData() {
+        const result = {};
 
-return result;
-}
+        // Map all the fields using the FIELD_IDS mapping
+        for (const [fieldName, fieldId] of Object.entries(this.FIELD_IDS)) {
+            result[fieldName] = this.getFieldValueById(fieldId);
+        }
+
+        return result;
+    }
 }
 
 // Use the incoming webhook data (passed in as 'input' in the Pabbly code step)
